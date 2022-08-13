@@ -1,4 +1,5 @@
 ﻿using System;
+using VeritechChallenge.src.model;
 using VeritechChallenge.src.util;
 
 namespace VeritecChallenge
@@ -7,12 +8,16 @@ namespace VeritecChallenge
     {
         static void Main(string[] args)
         {
-            IOHelper.RequestGrossIncome();
-            IOHelper.RequestPayFreq();
+            decimal grossIncome = IOHelper.RequestGrossIncome();
+            PayFreq payFreq = IOHelper.RequestPayFreq();
+
+            PayrollDetails payrollDetails = new PayrollDetails(grossIncome, payFreq);
 
             IOHelper.DisplayCalculationNotification();
 
-            IOHelper.DisplayResults(null);
+            SalaryDetails salaryDetails = new SalaryDetails(grossIncome, payFreq);
+
+            IOHelper.DisplayResults(salaryDetails);
         }
     }
 }
