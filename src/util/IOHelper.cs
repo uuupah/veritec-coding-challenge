@@ -14,7 +14,6 @@ namespace VeritechChallenge.src.util
             Console.Write("Enter your salary package amount: ");
 
             decimal grossIncome;
-
             while (!ValidationHelper.ValidateGrossIncome(Console.ReadLine(), out grossIncome))
             {
                 Console.Write("Invalid input. Enter your salary package amount: ");
@@ -25,10 +24,9 @@ namespace VeritechChallenge.src.util
 
         public static PayFreq RequestPayFreq()
         {
-            PayFreq payFreq;
-
             Console.Write("Enter your pay frequency (W for weekly, F for fortnightly, M for monthly): ");
 
+            PayFreq payFreq;
             while (!ValidationHelper.ValidatePayFreq(Console.ReadLine(), out payFreq))
             {
                 Console.Write("Invalid input. Enter your pay frequency: ");

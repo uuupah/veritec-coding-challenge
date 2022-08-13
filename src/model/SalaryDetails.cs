@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VeritechChallenge.src.taxCode;
 
 namespace VeritechChallenge.src.model
 {
@@ -14,10 +15,16 @@ namespace VeritechChallenge.src.model
 
         public decimal grossIncome {get;}
         public PayFreq payFreq {get;}
+        public List<TaxCode> TaxCodes {get;}
 
         public SalaryDetails(decimal grossIncome, PayFreq payFreq) {
             this.grossIncome = grossIncome;
             this.payFreq = payFreq;
+            TaxCodes = new List<TaxCode>();
+
+            TaxCodes.Add(new MedicareLevy());
+            TaxCodes.Add(new BudgetRepairLevy());
+            TaxCodes.Add(new IncomeTax());
         }
         
         public decimal GetTaxableIncome() {
@@ -31,18 +38,15 @@ namespace VeritechChallenge.src.model
         public List<DeductionData> GetDeductions() {
             List<DeductionData> output = new List<DeductionData>();
 
-            //TODO automate adding new deductions from strings 
-            output.Add(new DeductionData("Medicare Levy", true, 1188.00m));
-            output.Add(new DeductionData("Budget Repair Levy", true, 0m));
-            output.Add(new DeductionData("Income Tax", true, 10839.00m));
+            foreach(TaxCode taxCode in TaxCodes) {
+                output.Add(taxCode.GetDeduction(GetTaxableIncome()));
+            }
 
             return output;
         }
 
         public decimal GetNetIncome() {
-            // TODO check this actually works
             decimal totalDeductions = GetDeductions().Sum(deduction => deduction.deductionAmount);
-
             return GetTaxableIncome() - totalDeductions;
         }
 
