@@ -11,29 +11,25 @@ namespace VeritechChallenge.src.util
         public static decimal? RequestGrossIncome()
         {
             Console.Write("Enter your salary package amount: ");
-            decimal grossIncome = Convert.ToDecimal(Console.ReadLine());
+
+            decimal grossIncome;
+            while(!ValidationHelper.ValidateGrossIncome(Console.ReadLine(), out grossIncome))
+            {
+                Console.Write("Invalid input. Enter your salary package amount: ");
+            }
+
             return grossIncome;
         }
 
         public static PayFreq? RequestPayFreq()
         {
             PayFreq payFreq;
+
             Console.Write("Enter your pay frequency (W for weekly, F for fortnightly, M for monthly): ");
-            char input = Convert.ToChar(Console.ReadLine());
-            switch (input)
+
+            while (!ValidationHelper.ValidatePayFreq(Console.ReadLine(), out payFreq))
             {
-                case 'W':
-                    payFreq = PayFreq.W;
-                    break;
-                case 'F':
-                    payFreq = PayFreq.F;
-                    break;
-                case 'M':
-                    payFreq = PayFreq.M;
-                    break;
-                default:
-                    payFreq = PayFreq.W;
-                    break;
+                Console.Write("Invalid input. Enter your pay frequency: ");
             }
 
             return payFreq;
