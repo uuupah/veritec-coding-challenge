@@ -58,9 +58,23 @@ namespace VeritechChallenge.src.model
                 default:
                     // the code should never reach this point
                     return GetNetIncome() / 12;
-
             }
+        }
 
+        // this is a bad solution but it will work for now
+        public string GetFriendlyPayFreq() {
+            switch (payFreq)
+            {
+                case PayFreq.W:
+                    return "week";
+                case PayFreq.F:
+                    return "fortnight";
+                case PayFreq.M:
+                    return "month";
+                default:
+                    // the code should never reach this point
+                    return "month";
+            }
         }
     }
 }

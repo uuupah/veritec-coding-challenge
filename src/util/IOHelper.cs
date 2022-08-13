@@ -59,7 +59,7 @@ namespace VeritechChallenge.src.util
 
             Console.WriteLine("");
             Console.WriteLine($"Net Income: {results.GetNetIncome().ToString("C")}");
-            Console.WriteLine($"Pay Packet: {results.GetPayPacket().ToString("C")}");
+            Console.WriteLine($"Pay Packet: {results.GetPayPacket().ToString("C")} per {results.GetFriendlyPayFreq()}");
             Console.WriteLine("");
             Console.WriteLine("Press any key to end...");
 
