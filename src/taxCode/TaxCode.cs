@@ -8,7 +8,6 @@ namespace VeritechChallenge.src.taxCode
 {
     public abstract class TaxCode
     {
-        // TODO check if adding nullable is necessary
         public string? friendlyName {get;}
         public bool roundToNearestDollar {get;}
 

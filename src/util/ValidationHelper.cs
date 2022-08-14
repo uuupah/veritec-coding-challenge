@@ -28,7 +28,6 @@ namespace VeritechChallenge.src.util
             }
 
             return false;       
-            // return decimal.TryParse(input, out output);
         }
 
         public static bool ValidatePayFreq(string? input, out PayFreq output)

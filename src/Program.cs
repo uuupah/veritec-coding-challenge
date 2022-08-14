@@ -11,8 +11,6 @@ namespace VeritecChallenge
             decimal grossIncome = IOHelper.RequestGrossIncome();
             PayFreq payFreq = IOHelper.RequestPayFreq();
 
-            PayrollDetails payrollDetails = new PayrollDetails(grossIncome, payFreq);
-
             SalaryDetails salaryDetails = new SalaryDetails(grossIncome, payFreq);
 
             IOHelper.DisplayResults(salaryDetails);
