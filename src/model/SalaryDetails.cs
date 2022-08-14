@@ -18,6 +18,10 @@ namespace VeritechChallenge.src.model
         public List<TaxCode> TaxCodes {get;}
 
         public SalaryDetails(decimal grossIncome, PayFreq payFreq) {
+            if (grossIncome < 0) {
+                throw new ArgumentException("Gross income must be a number equal to or greater than zero");
+            }
+
             this.grossIncome = grossIncome;
             this.payFreq = payFreq;
             TaxCodes = new List<TaxCode>();
