@@ -35,32 +35,31 @@ namespace VeritechChallenge.src.util
             return payFreq;
         }
 
-        public static void DisplayCalculationNotification()
-        {
-            Console.WriteLine("\nCalculating salary details...\n");
-        }
-
         public static void DisplayResults(SalaryDetails results)
         {
+            Console.WriteLine("\nCalculating salary details...\n");
 
-            Console.WriteLine($"Gross package: {results.grossIncome.ToString("C")}");
-            Console.WriteLine($"Superannuation: {results.GetSuperAnnuation().ToString("C")}");
-            Console.WriteLine("");
-            Console.WriteLine($"Taxable Income: {results.GetTaxableIncome().ToString("C")}");
-            Console.WriteLine("");
-            Console.WriteLine("Deductions:");
+            string output = "";
+
+            output += $"Gross package: {results.grossIncome.ToString("C")}\n";
+            output += $"Superannuation: {results.GetSuperAnnuation().ToString("C")}\n";
+            output += "\n";
+            output += $"Taxable Income: {results.GetTaxableIncome().ToString("C")}\n";
+            output += "\n";
+            output += "Deductions:\n";
 
             foreach (DeductionData deduction in results.GetDeductions())
             {
-                Console.WriteLine($"{deduction.friendlyName}: {(deduction.roundToNearestDollar ? Math.Round(deduction.deductionAmount, 0).ToString("C") : Math.Round(deduction.deductionAmount, 2).ToString("C"))}");
+                output += $"{deduction.friendlyName}: {(deduction.roundToNearestDollar ? Math.Round(deduction.deductionAmount, 0).ToString("C") : Math.Round(deduction.deductionAmount, 2).ToString("C"))}\n";
             }
 
-            Console.WriteLine("");
-            Console.WriteLine($"Net Income: {results.GetNetIncome().ToString("C")}");
-            Console.WriteLine($"Pay Packet: {results.GetPayPacket().ToString("C")} per {results.GetFriendlyPayFreq()}");
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to end...");
+            output += "\n";
+            output += $"Net Income: {results.GetNetIncome().ToString("C")}\n";
+            output += $"Pay Packet: {results.GetPayPacket().ToString("C")} per {results.GetFriendlyPayFreq()}\n";
+            output += "\n";
+            output += "Press any key to end...";
 
+            Console.WriteLine(output);
             Console.ReadKey(true);
         }
     }

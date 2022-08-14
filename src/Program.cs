@@ -13,8 +13,6 @@ namespace VeritecChallenge
 
             PayrollDetails payrollDetails = new PayrollDetails(grossIncome, payFreq);
 
-            IOHelper.DisplayCalculationNotification();
-
             SalaryDetails salaryDetails = new SalaryDetails(grossIncome, payFreq);
 
             IOHelper.DisplayResults(salaryDetails);
