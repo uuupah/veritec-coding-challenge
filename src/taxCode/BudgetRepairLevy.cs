@@ -15,18 +15,21 @@ namespace VeritechChallenge.src.taxCode
             this.friendlyName = "Budget Repair Levy";
             this.roundToNearestDollar = true;
         }
+        
         public override DeductionData GetDeduction(decimal taxableIncome)
         {
+            if (taxableIncome < 0) {
+                throw new ArgumentException("Taxable income must be a number equal to or greater than zero");
+            }
+
             decimal deduction;
             taxableIncome = Math.Floor(taxableIncome);
 
-            if (taxableIncome >= 0 && taxableIncome < 180001) {
+            if (taxableIncome <= 180000) {
                 deduction = 0;
-            } else if (taxableIncome >= 180001) {
-                deduction = Math.Ceiling(((taxableIncome - 180000) * 0.02m));
             } else {
-                throw new ArgumentException("Taxable income must be a number equal to or greater than zero");
-            }
+                deduction = Math.Ceiling(((taxableIncome - 180000) * 0.02m));
+            } 
 
             return new DeductionData(friendlyName, roundToNearestDollar, deduction);
         }

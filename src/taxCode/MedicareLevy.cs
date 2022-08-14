@@ -15,22 +15,25 @@ namespace VeritechChallenge.src.taxCode
             this.friendlyName = "Medicare Levy";
             this.roundToNearestDollar = true;
         }
+
         public override DeductionData GetDeduction(decimal taxableIncome)
         {
-            decimal deduction;
-            taxableIncome = Math.Floor(taxableIncome);
-
-            if (taxableIncome >= 0 && taxableIncome < 21336) {
-                deduction = 0;
-            } else if (taxableIncome >= 21336 && taxableIncome < 26669) {
-                deduction = Math.Ceiling((taxableIncome - 21335) * 0.1m);
-            } else if (taxableIncome >= 26669) {
-                deduction = Math.Ceiling((taxableIncome * 0.02m));
-            } else {
+            if (taxableIncome < 0) {
                 throw new ArgumentException("Taxable income must be a number equal to or greater than zero");
             }
 
-            return new DeductionData(friendlyName, roundToNearestDollar, deduction);
+            decimal deduction;
+            taxableIncome = Math.Floor(taxableIncome);
+
+            if (taxableIncome <= 21335) {
+                deduction = 0;
+            } else if (taxableIncome <= 26668) {
+                deduction = (taxableIncome - 21335) * 0.1m;
+            } else {
+                deduction = (taxableIncome * 0.02m);
+            } 
+
+            return new DeductionData(friendlyName, roundToNearestDollar, Math.Ceiling(deduction));
         }
     }
 }
