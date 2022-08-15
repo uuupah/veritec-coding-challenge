@@ -20,9 +20,9 @@ Superannuation: $19,086.76
 Taxable Income: $200,913.24
 
 Deductions:
-Medicare Levy: 4019
-Budget Repair Levy: 419
-Income Tax: 64062
+Medicare Levy: $4019.00
+Budget Repair Levy: $419.00
+Income Tax: $64062.00
 
 Net Income: $132,413.24
 Pay Packet: $5,078.86 per fortnight

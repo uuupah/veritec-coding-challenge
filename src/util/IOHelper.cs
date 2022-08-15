@@ -73,8 +73,7 @@ namespace VeritechChallenge.src.util
 
             foreach (DeductionData deduction in results.GetDeductions())
             {
-                // TODO make rounding only occur in one place
-                output += $"{deduction.friendlyName}: {(deduction.deductionAmount)}\n";
+                output += $"{deduction.friendlyName}: {(deduction.deductionAmount.ToString("C"))}\n";
             }
 
             output += "\n";
