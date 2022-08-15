@@ -7,8 +7,19 @@ using VeritechChallenge.src.model;
 
 namespace VeritechChallenge.src.util
 {
+    /// <summary>
+    /// Provides specific validation for data types relevant to the salary calculation. Methods follow the 
+    /// <see cref="TryParse(string input, var out output)"/> style, returning a boolean representing on the validity of the input
+    /// </summary>
     public class ValidationHelper
     {
+        /// <summary>
+        /// Converts the string representation of a number to its System.Decimal equivalent.
+        /// A return value indicates whether the conversion succeeded or failed.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if <c>input</c> represented a positive integer or decimal, otherwise <c>false</c>.
+        /// </returns>
         public static bool ValidateGrossIncome(string? input, out decimal output)
         {
             if (input is null)
@@ -30,6 +41,14 @@ namespace VeritechChallenge.src.util
             return false;       
         }
 
+        /// <summary>
+        /// Converts the string representation of a number to its System.Decimal equivalent.
+        /// A return value indicates whether the conversion succeeded or failed.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if <c>input</c> represents one of the possible PayFreq values, otherwise 
+        /// <c>false</c>.
+        /// </returns>
         public static bool ValidatePayFreq(string? input, out PayFreq output)
         {
             // catch null and non-char, non-letter inputs

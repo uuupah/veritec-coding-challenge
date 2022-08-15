@@ -6,9 +6,20 @@ using VeritechChallenge.src.model;
 
 namespace VeritechChallenge.src.util
 {
+    /// <summary>
+    /// A helper class designed to encapsulate console input / output commands. 
+    /// </summary>
     public class IOHelper
     {
 
+        /// <summary>
+        /// This method sends a message to the console requesting a gross salary package, then waits for the user to type in a 
+        /// response to the console. Refuses non-numeric, null and negative inputs, prompting the user until a valid input is
+        /// entered. Validation completed by <see cref="ValidationHelper.ValidateGrossIncome(string?, out decimal)"/>
+        /// </summary>
+        /// <returns>
+        /// A decimal representing the valid gross income value entered by the user.
+        /// </returns>
         public static decimal RequestGrossIncome()
         {
             Console.Write("Enter your salary package amount: ");
@@ -22,6 +33,14 @@ namespace VeritechChallenge.src.util
             return grossIncome;
         }
 
+        /// <summary>
+        /// This method sends a message to the console requesting a single character representing their pay frequency, then waits 
+        /// for the user to type in a response to the console. Refuses non char and null inputs, prompting the user until a valid 
+        /// input is entered. Validation completed by <see cref="ValidationHelper.ValidatePayFreq(string?, out PayFreq)"/>
+        /// </summary>
+        /// <returns>
+        /// A <c>PayFreq</c> object representing the pay frequency specified by the user.
+        /// </returns>
         public static PayFreq RequestPayFreq()
         {
             Console.Write("Enter your pay frequency (W for weekly, F for fortnightly, M for monthly): ");
@@ -35,6 +54,10 @@ namespace VeritechChallenge.src.util
             return payFreq;
         }
 
+        /// <summary>
+        /// Acts as a kind of helper function to display the results from a <see cref="SalaryDetails"/> object to the user. 
+        /// </summary>
+        /// <param name="results">A SalaryDetails object</param>
         public static void DisplayResults(SalaryDetails results)
         {
             Console.WriteLine("\nCalculating salary details...\n");
@@ -50,7 +73,8 @@ namespace VeritechChallenge.src.util
 
             foreach (DeductionData deduction in results.GetDeductions())
             {
-                output += $"{deduction.friendlyName}: {(deduction.roundToNearestDollar ? Math.Round(deduction.deductionAmount, 0).ToString("C") : Math.Round(deduction.deductionAmount, 2).ToString("C"))}\n";
+                // TODO make rounding only occur in one place
+                output += $"{deduction.friendlyName}: {(deduction.deductionAmount)}\n";
             }
 
             output += "\n";
