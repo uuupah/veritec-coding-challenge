@@ -1,11 +1,34 @@
 # Veritec Coding Challenge
 A c# cli app to convert a gross salary package to a pay packet breakdown. 
 
-## Getting started
+## Getting Started
 Ensure that you have the dotnet sdk installed from here: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
 Clone the program to your local system, navigate into the project directory in your terminal, and run
 ```dotnet run```
+
+## Example Output
+```
+Enter your salary package amount: 220000
+Enter your pay frequency (W for weekly, F for fortnightly, M for monthly): F
+
+Calculating salary details...
+
+Gross package: $220,000.00
+Superannuation: $19,086.76
+
+Taxable Income: $200,913.24
+
+Deductions:
+Medicare Levy: 4019
+Budget Repair Levy: 419
+Income Tax: 64062
+
+Net Income: $132,413.24
+Pay Packet: $5,078.86 per fortnight
+
+Press any key to end...
+```
 
 ## Assumptions
 - This system assumes that the tasks will not be repeated and by extension, will not benefit from multithreading for bulk tasks.
