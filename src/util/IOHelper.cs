@@ -55,10 +55,10 @@ namespace VeritechChallenge.src.util
         }
 
         /// <summary>
-        /// Acts as a kind of helper function to display the results from a <see cref="SalaryDetails"/> object to the user. 
+        /// Acts as a kind of helper function to display the results from a <see cref="SalaryCalcs"/> object to the user. 
         /// </summary>
         /// <param name="results">A SalaryDetails object</param>
-        public static void DisplayResults(SalaryDetails results)
+        public static void DisplayResults(SalaryCalcs results)
         {
             Console.WriteLine("\nCalculating salary details...\n");
 
